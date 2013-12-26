@@ -1,0 +1,22 @@
+<h1>Tasks</h1>
+
+<table class="table table-bordered table-striped table-two-pane">
+  <tr>
+    <th><%= "Action" %></th>
+    <th><%= "State" %></th>
+    <th><%= "Result" %></th>
+    <th><%= "Started at" %></th>
+  </tr>
+  <% for task in @tasks %>
+    <tr>
+      <td class="task-id two-pane-link">
+        <%= link_to("#{task.humanized[:action]} #{task.humanized[:input]}", dyntask_task_path(:id => task)) %>
+      </td>
+      <td><%= task.state %></td>
+      <td><%= task.result %></td>
+      <td><%= task.started_at %></td>
+    </tr>
+  <% end %>
+</table>
+<%= page_entries_info @tasks %>
+<%= will_paginate @tasks %>

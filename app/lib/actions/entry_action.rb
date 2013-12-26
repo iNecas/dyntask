@@ -44,7 +44,7 @@ module Actions
     end
 
     def humanized_input
-      Helpers::Humanizer.new(self).input
+      input.pretty_inspect
     end
 
   end

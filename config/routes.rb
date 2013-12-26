@@ -1,27 +1,16 @@
 require 'dynflow/web_console'
 
-Foreman::Application.routes.draw do
-  namespace :foreman_tasks do
-    resources :tasks, :only => [:index, :show] do
-      collection do
-        get 'auto_complete_search'
-      end
-    end
+Rails.application.routes.draw do
+  namespace :dyntask do
+    resources :tasks, :only => [:index, :show]
 
     namespace :api do
-      resources :tasks, :only => [:show] do
-        post :bulk_search, :on => :collection
-      end
+      resources :tasks, :only => [:show]
     end
 
-    if ForemanTasks.dynflow_initialized?
+    if Dyntask.dynflow_initialized?
       dynflow_console = Dynflow::WebConsole.setup do
-        before do
-          # NG_TODO: propper authentication
-          User.current = User.first
-        end
-
-        set(:world) { ForemanTasks.world }
+        set(:world) { Dyntask.world }
       end
 
       mount dynflow_console => "/dynflow"

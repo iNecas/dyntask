@@ -20,22 +20,22 @@ module Actions
       module PlanMethods
 
         def task
-          ::ForemanTasks::Task::DynflowTask.find_by_external_id!(execution_plan_id)
+          ::Dyntask::Task::DynflowTask.find_by_external_id!(execution_plan_id)
         end
 
         # @see Lock.exclusive!
         def exclusive_lock!(resource)
-          ::ForemanTasks::Lock.exclusive!(resource, task.id)
+          ::Dyntask::Lock.exclusive!(resource, task.id)
         end
 
         # @see Lock.lock!
         def lock!(resource, *lock_names)
-          ::ForemanTasks::Lock.lock!(resource, task.id, *lock_names.flatten)
+          ::Dyntask::Lock.lock!(resource, task.id, *lock_names.flatten)
         end
 
         # @see Lock.link!
         def link!(resource)
-          ::ForemanTasks::Lock.link!(resource, task.id)
+          ::Dyntask::Lock.link!(resource, task.id)
         end
       end
     end

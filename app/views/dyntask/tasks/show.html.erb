@@ -1,0 +1,63 @@
+<div class="task-details">
+  <div>
+    <span class="param-name"><%= "Id" %>:</span>
+    <span class="param-value"><%= @task.id %></span>
+  </div>
+  <div>
+    <span class="param-name"><%= "Action" %>:</span>
+    <span class="param-value"><%= @task.action %></span>
+  </div>
+  <div>
+    <span class="param-name"><%= "Name" %>:</span>
+    <span class="param-value"><%= @task.humanized[:action] %></span>
+  </div>
+  <div>
+    <span class="param-name"><%= "Started at" %>:</span>
+    <span class="param-value"><%= @task.started_at %></span>
+  </div>
+  <div>
+    <span class="param-name"><%= "Ended at" %>:</span>
+    <span class="param-value"><%= @task.ended_at %></span>
+  </div>
+  <div>
+    <span class="param-name"><%= "State" %>:</span>
+    <span class="param-value"><%= @task.state %></span>
+  </div>
+  <div>
+    <span class="param-name"><%= "Result" %>:</span>
+    <span class="param-value"><%= @task.result %></span>
+  </div>
+  <div>
+    <span class="param-name"><%= "Input" %>:</span>
+    <span class="param-value"><%= @task.humanized[:input] %></span>
+  </div>
+  <div>
+    <span class="param-name"><%= "Progress" %>:</span>
+    <span class="param-value">
+      <div class="progress progress-striped">
+        <div class="bar" style="width: <%= 100 * @task.progress %>%;"></div>
+      </div>
+  </div>
+  <div>
+    <span class="param-name"><%= "Output" %>:</span>
+    <span class="param-value">
+      <pre><%= @task.humanized[:output] %></pre>
+    </span>
+  </div>
+  <div>
+    <span class="param-name"><%= "Raw input" %>:</span>
+    <span class="param-value">
+      <pre><%= @task.input.pretty_inspect %></pre>
+    </span>
+  </div>
+  <div>
+    <span class="param-name"><%= "Raw output" %>:</span>
+    <span class="param-value">
+      <pre><%= @task.output.pretty_inspect %></pre>
+    </span>
+  </div>
+  <div>
+    <span class="param-name"><%= "External id" %>:</span>
+    <span class="param-value"><%= @task.external_id %></span>
+  </div>
+</div>
