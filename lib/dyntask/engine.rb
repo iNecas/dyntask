@@ -3,7 +3,8 @@ module Dyntask
     engine_name "dyntask"
 
     initializer "dyntask.register_paths" do |app|
-      Dyntask.eager_load_paths.concat(%W[#{Dyntask::Engine.root}/app/lib/actions])
+      actions_path = "#{Dyntask::Engine.root}/app/lib/actions"
+      Dir[File.join(actions_path, "**", "*.rb")].each { |f| require f }
     end
 
     initializer "dyntask.load_app_instance_data" do |app|
