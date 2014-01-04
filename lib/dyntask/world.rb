@@ -20,6 +20,7 @@ module Dyntask
         world.reload!
       end
       at_exit { world.terminate.wait }
+      consistency_check
     end
   end
 end
