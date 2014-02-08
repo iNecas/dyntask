@@ -8,12 +8,9 @@ Rails.application.routes.draw do
       resources :tasks, :only => [:show]
     end
 
-    if Dyntask.dynflow_initialized?
-      dynflow_console = Dynflow::WebConsole.setup do
-        set(:world) { Dyntask.world }
-      end
-
-      mount dynflow_console => "/dynflow"
+    if Dyntask.dynflow.config.web_console?
+      require 'dynflow/web_console'
+      mount Dyntask.dynflow.web_console => "/dynflow"
     end
   end
 end

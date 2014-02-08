@@ -1,7 +1,7 @@
 module Dyntask
   class Task::DynflowTask < Task
     def execution_plan
-      @execution_plan ||= Dyntask.world.persistence.load_execution_plan(external_id)
+      @execution_plan ||= Dyntask.dynflow.world.persistence.load_execution_plan(external_id)
     end
 
     def input
@@ -30,7 +30,7 @@ module Dyntask
         # load extra data, there is place for optimization on Dynflow side
         # if needed (getting more keys into the data value)
         unless self.action
-          self.action = main_action.action_class.name
+          self.action = main_action.class.name
         end
         update_progress
       end
