@@ -1,3 +1,5 @@
+require 'rabl'
+
 module Dyntask
   class Engine < ::Rails::Engine
     engine_name "dyntask"

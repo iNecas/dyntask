@@ -1,4 +1,4 @@
-object @task if @task
+object locals[:task]
 
 attributes :id, :action
 attributes :username, :started_at, :ended_at, :state, :result, :progress

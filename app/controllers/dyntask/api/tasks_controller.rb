@@ -17,7 +17,7 @@ module Dyntask
       before_filter :find_task, :only => [:show]
 
       def show
-        render 'tasks/show'
+        render 'dyntask/api/tasks/show', :locals => { :task => @task }
       end
 
       private
