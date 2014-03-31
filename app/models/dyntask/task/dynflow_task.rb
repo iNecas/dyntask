@@ -32,13 +32,19 @@ module Dyntask
         unless self.action
           self.action = main_action.class.name
         end
-        update_progress
       end
       self.save!
     end
 
-    def update_progress
-      self.progress = execution_plan.progress
+    def progress
+      case self.state.to_s
+      when "running", "paused"
+        0.5
+      when "stopped"
+        1
+      else
+        0
+      end
     end
 
     protected

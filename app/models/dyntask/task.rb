@@ -55,6 +55,10 @@ module Dyntask
       return {:conditions => condition, :joins => joins }
     end
 
+    def progress
+      execution_plan.progress
+    end
+
     protected
 
     def generate_id
